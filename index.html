@@ -40,9 +40,9 @@
         <script>
         $(document).ready(function(){			
                 $.jsonp({
-                        url: 'http://twitter.com/status/user_timeline/samcroft.json?count=20',
+                        url: 'https://www.wallstreet-online.de/_rpc/json/mobile/request/news',
                         callbackParameter: 'callback',
-                        success: function(data, status) {
+                        success: function(data, status) {                            
                                 //$('#your-tweets').append('<li>The feed loads fine');
                                 $.each(data, function(i,item){ 
                                         var tweet = item.text;
