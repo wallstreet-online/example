@@ -24,6 +24,9 @@
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <title>Hello World</title>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script src="js/jquery.jsonp-2.4.0.min.js"></script>
+
     </head>
     <body>
         <div class="app">
@@ -33,6 +36,25 @@
                 <p class="event received">Device is Ready</p>
             </div>
         </div>
+        <ul id="your-tweets"></ul>
+        <script>
+        $(document).ready(function(){			
+                $.jsonp({
+                        url: 'http://twitter.com/status/user_timeline/samcroft.json?count=20',
+                        callbackParameter: 'callback',
+                        success: function(data, status) {
+                                //$('#your-tweets').append('<li>The feed loads fine');
+                                $.each(data, function(i,item){ 
+                                        var tweet = item.text;
+                                        $('#your-tweets').append('<li>'+tweet);
+                                });
+                        },
+                        error: function(){
+                                $('#your-tweets').append('<li>There was an error loading the feed');
+                        }
+                });
+        });
+        </script>
         <script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript">
