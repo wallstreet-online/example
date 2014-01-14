@@ -43,8 +43,8 @@
                         url: 'https://mobile.moojoo.mo.dev.womedia.de/_rpc/json/mobile/request/newsApp',
                         success: function(data, status) {                            
                                 //$('#your-tweets').append('<li>The feed loads fine');
-                                $.each(data, function(i,item){ 
-                                        var tweet = item.text;
+                                $.each(data.news, function(i,item){ 
+                                        var tweet = item.title;
                                         $('#your-tweets').append('<li>'+tweet);
                                 });
                         },
